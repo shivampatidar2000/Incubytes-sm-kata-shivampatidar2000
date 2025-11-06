@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      render json: {  message: "Employee created successfully", data: @employee }, status: 201
+      render json: { data: @employee, message: "Employee created successfully" }, status: 201
     else
       render json: { error: @employee.errors.full_messages }, status: 422
     end
@@ -23,14 +23,14 @@ class EmployeesController < ApplicationController
 
   def update
     if @employee.update(employee_params)
-      render json: {  message: "Employee updated successfully", data: @employee }, status: 200
+      render json: { data: @employee, message: "Employee updated successfully" }, status: 200
     else
       render json: { error: @employee.errors.full_messages }, status: 422
     end
   end
   def destroy
     if @employee.destroy
-      render json: { data: "Employee delete successfully " }, status: 200
+      render json: { data: "Employee delete successfully" }, status: 200
     else
       render json: { err0r: "Employee not deleted" }, status: 422
     end
